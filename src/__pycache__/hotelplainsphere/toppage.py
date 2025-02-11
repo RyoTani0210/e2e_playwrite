@@ -1,0 +1,34 @@
+from playwright.sync_api import page
+class HotelPlanispherePage:
+    def __init__(self, page, test_data):
+        self.page = page
+        self.url = test_data["url"]
+        self.home_button = "text=ホーム"
+        self.reservation_button = "text=宿泊予約"
+        self.register_button = "text=会員登録"
+        self.login_button = "text=ログイン"
+        self.notice_button = "text=お知らせ"
+
+    def open_page(self):
+        """ページを開く"""
+        self.page.goto(self.url)
+
+    def click_home(self):
+        """ホームボタンをクリックする"""
+        self.page.click(self.home_button)
+
+    def click_reservation(self):
+        """宿泊予約ボタンをクリックする"""
+        self.page.click(self.reservation_button)
+
+    def click_register(self):
+        """会員登録ボタンをクリックする"""
+        self.page.click(self.register_button)
+
+    def click_login(self):
+        """ログインボタンをクリックする"""
+        self.page.click(self.login_button)
+
+    def click_notice(self):
+        """お知らせボタンをクリックする"""
+        self.page.click(self.notice_button)
