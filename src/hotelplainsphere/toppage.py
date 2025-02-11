@@ -1,7 +1,7 @@
-from playwright.sync_api import page
+from playwright.sync_api import Page
 class HotelPlanispherePage:
-    def __init__(self, page, test_data):
-        self.page = page
+    def __init__(self, Page, test_data):
+        self.page = Page
         self.url = test_data["url"]
         self.home_button = "text=ホーム"
         self.reservation_button = "text=宿泊予約"
@@ -12,6 +12,11 @@ class HotelPlanispherePage:
     def open_page(self):
         """ページを開く"""
         self.page.goto(self.url)
+    
+    def is_home_button_clickable(self):
+        """ホームボタンがクリックできる状態か確認"""
+        return self.page.is_visible(self.home_button) and self.page.is_enabled(self.home_button)
+
 
     def click_home(self):
         """ホームボタンをクリックする"""

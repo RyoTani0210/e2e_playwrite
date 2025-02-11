@@ -4,3 +4,4 @@
 /lib
 /pyvenv.cfg
 /lib64
+src/hotelplainsphere/__pycache__/
