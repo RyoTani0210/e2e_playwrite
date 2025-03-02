@@ -7,6 +7,6 @@ import pytest
 @pytest.fixture
 def test_data():
     return {
-        "url": "https://example.com",
-        "expected_title": "Example Domain",
+        "url": "https://hotel-example-site.takeyaqa.dev/ja/index.html",
+        "expected_title": "HOTEL PLANISPHERE - テスト自動化練習サイト",
         }

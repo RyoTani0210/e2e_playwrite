@@ -4,7 +4,7 @@ from playwright.sync_api import Page
 
 def test_example(page: Page, test_data):
     """
-    example.comのタイトルがあっているか確認する
+    タイトルがあっているか確認する
     """
     page.goto(test_data["url"])
     page.pause()
