@@ -35,13 +35,10 @@ def test_all_buttons_navigation(page: Page, test_data, button_name, click_method
 def test_auth(page: Page, test_data, email, password, expected):
     """
     ログイン機能のテスト
-    問題発生中
-    ログインした後、期待したページに遷移しない
-    ロード待ちまで待つ処理を入れても同じ
-    
     """
 
     # 準備
+    # browser =page.chronium.launch(headerless=False)
     login_page = LoginPage(page, test_data)
     login_page.openpage()
 
@@ -49,9 +46,7 @@ def test_auth(page: Page, test_data, email, password, expected):
     login_page.login(email, password)
 
     # 結果確認
-    
+    # page.wait_for_timeout(10*1000) #デバック用。10秒まつ
     is_mypage = page.url == test_data["url"] + "/mypage.html"
     
     assert is_mypage == expected
-
-    #後処理

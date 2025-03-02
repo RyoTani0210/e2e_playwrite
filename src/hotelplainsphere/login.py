@@ -9,7 +9,7 @@ class LoginPage:
         self.url = testdata["url"] + "/login.html"
         self.email_input_locator = "input[name='email']"
         self.password_input_locator = "input[name='password']"
-        self.login_button_locator = "text=ログイン"
+        self.login_button_locator = "button[id='login-button']:has-text('ログイン')"
     
     def openpage(self):
         self.page.goto(self.url)
