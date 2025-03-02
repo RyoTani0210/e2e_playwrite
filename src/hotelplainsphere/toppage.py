@@ -1,8 +1,11 @@
 from playwright.sync_api import Page
 class HotelPlanispherePage:
+    """
+    トップページのpageオブジェクト
+    """
     def __init__(self, Page, test_data):
         self.page = Page
-        self.url = test_data["url"]
+        self.url = test_data["url"] + "/index.html"
         self.home_button = "text=ホーム"
         self.reservation_button = "text=宿泊予約"
         self.register_button = "text=会員登録"

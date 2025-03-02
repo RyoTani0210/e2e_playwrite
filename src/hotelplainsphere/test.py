@@ -1,14 +1,15 @@
 import pytest
 from playwright.sync_api import Page
 
-from toppage import HotelPlanispherePage  #`HotelPlanispherePage` クラスがあるファイルをimport
+from toppage import HotelPlanispherePage
+from login import LoginPage
 
 
 @pytest.mark.parametrize("button_name, click_method, expected_path", [
-    ("home", "click_home", "index.html"),
-    ("reservation", "click_reservation", "plans.html"),
-    ("register", "click_register", "signup.html"),
-    ("login", "click_login", "login.html")
+    ("home", "click_home", "/index.html"),
+    ("reservation", "click_reservation", "/plans.html"),
+    ("register", "click_register", "/signup.html"),
+    ("login", "click_login", "/login.html")
 ])
 def test_all_buttons_navigation(page: Page, test_data, button_name, click_method, expected_path):
     """
@@ -26,3 +27,27 @@ def test_all_buttons_navigation(page: Page, test_data, button_name, click_method
     assert page.url == expected_url
 
 
+@pytest.mark.parametrize("email, password, expected", [
+    ("ichiro@example.com", "password", True),#ログイン成功
+    ("sakura@example.com", "pass1234", True),#ログイン成功
+    ("ichiro@example.com", "passw0rd", False) #ログイン失敗
+])
+def test_auth(page: Page, test_data, email, password, expected):
+    """
+    ログイン機能のテスト
+    """
+    playwright.chromium.launch(headless=False) 
+    # 準備
+    login_page = LoginPage(page, test_data)
+    login_page.openpage()
+
+    # ログイン
+    login_page.login(email, password)
+
+    # 結果確認
+    print(page.url)
+    is_mypage = page.url == test_data["url"] + "/mypage.html"
+    
+    assert is_mypage == expected
+
+    #後処理

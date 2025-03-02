@@ -4,10 +4,11 @@
 
 import pytest
 
+
 @pytest.fixture
 def test_data():
     return {
-        "url": "https://hotel-example-site.takeyaqa.dev/ja/",
+        "url": "https://hotel-example-site.takeyaqa.dev/ja",
         "users":{
             "one":{#プレミアム会員
                 "email": "ichiro@example.com",
@@ -26,4 +27,4 @@ def test_data():
                 "password": "pass-pass",
             },
         }
-        }
+    }
