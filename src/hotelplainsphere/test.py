@@ -38,7 +38,6 @@ def test_auth(page: Page, test_data, email, password, expected):
     """
 
     # 準備
-    # browser =page.chronium.launch(headerless=False)
     login_page = LoginPage(page, test_data)
     login_page.openpage()
 
