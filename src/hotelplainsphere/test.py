@@ -35,8 +35,12 @@ def test_all_buttons_navigation(page: Page, test_data, button_name, click_method
 def test_auth(page: Page, test_data, email, password, expected):
     """
     ログイン機能のテスト
+    問題発生中
+    ログインした後、期待したページに遷移しない
+    ロード待ちまで待つ処理を入れても同じ
+    
     """
-    playwright.chromium.launch(headless=False) 
+
     # 準備
     login_page = LoginPage(page, test_data)
     login_page.openpage()
@@ -45,7 +49,7 @@ def test_auth(page: Page, test_data, email, password, expected):
     login_page.login(email, password)
 
     # 結果確認
-    print(page.url)
+    
     is_mypage = page.url == test_data["url"] + "/mypage.html"
     
     assert is_mypage == expected
